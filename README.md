@@ -1,0 +1,3 @@
+Simple project to be able to calculate how much money each developer has
+
+It's just starting, so is for me and my wife for now hehe...
