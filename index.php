@@ -30,67 +30,45 @@
 	<link href="css/bootstrap-responsive.css" rel="stylesheet">
   </head>
 
-  <body>
+<body ng-app="project_calculator">
 
-	<div class="navbar navbar-inverse navbar-fixed-top">
-	  <div class="navbar-inner">
-		<div class="container-fluid">
-		  <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		  </button>
-		  <a class="brand" href="#">Project name</a>
-		  <div class="nav-collapse collapse">
-			<p class="navbar-text pull-right">
-			  Logged in as <a href="#" class="navbar-link">Username</a>
-			</p>
-			<ul class="nav">
-			  <li class="active"><a href="#">Home</a></li>
-			  <li><a href="#about">About</a></li>
-			  <li><a href="#contact">Contact</a></li>
-			</ul>
-		  </div><!--/.nav-collapse -->
-		</div>
-	  </div>
-	</div>
-
-	<div class="container-fluid">
-	  <div class="row-fluid">
-		  <div class="hero-unit">
-			<h1>Superduper calculador montos</h1>
+<div class="container-fluid">
+	<div class="row-fluid" ng-controller="ProjectCalculatorController as projectmanager">
+	  	<h1>Project profits per developer</h1>
+		<div class="hero-unit" ng-repeat="project in projectmanager.projects">
+			<h2>Project: {{ project.name }}</h2>
+			Total amount: <input type="text" value="{{ project.amount }}" />
 			<table class="table">
 				<thead>
 					<tr>
-						<th>Proyecto</th>
-						<th>Presupuesto Total</th>
-						<th>Horas Mariana</th>
-						<th>Horas Franco</th>
-						<th>Plata Mariana</th>
-						<th>Plata Franco</th>
+						<th>Developer</th>
+						<th>Hours</th>
+						<th>Profit</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td><input type="" /></td>
-						<td><input type="" /></td>
-						<td><input type="" /></td>
-						<td><input type="" /></td>
-						<td></td>
+					<tr ng-repeat="developer in project.hours_developers">
+						<td>{{ developer.name }}</td>
+						<td><input type="text" value="{{ developer.hours }}" /></td>
+						<td>{{ (developer.hours/project.hours_total) * project.amount }}</td>
 						<td></td>
 					</tr>
 				</tbody>
 			</table>
-		  </div>
-	  </div><!--/row-->
+		</div>
+	</div><!--/row-->
 
-	  <hr>
+	<footer>
+		<p>&copy; <a href="http://720developments.com" target="_blank">720developments.com</a></p>
+	</footer>
 
-	  <footer>
-		<p>&copy; Company 2013</p>
-	  </footer>
+</div><!--/.fluid-container-->
 
-	</div><!--/.fluid-container-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+		
 
-  </body>
+</body>
 </html>
