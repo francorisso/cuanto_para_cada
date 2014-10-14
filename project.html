@@ -1,0 +1,21 @@
+<h2>Project: {{ project.name }}</h2>
+<p>Total amount: <input type="text" value="{{ project.amount }}" ng-model="project.amount" /></p>
+<form>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Developer</th>
+			<th>Hours</th>
+			<th>Profit</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="developer in project.hours_developers">
+			<td>{{ developer.name }}</td>
+			<td><input type="text" value="{{ developer.hours }}" ng-model="developer.hours" ng-change="projectmanagerCtrl.changeHours(project);" /></td>
+			<td>{{ (developer.hours/project.hours_total) * project.amount  | currency}}</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+</form>

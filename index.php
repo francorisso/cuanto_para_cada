@@ -33,28 +33,10 @@
 <body ng-app="project_calculator">
 
 <div class="container-fluid">
-	<div class="row-fluid" ng-controller="ProjectCalculatorController as projectmanager">
+	<div class="row-fluid" ng-controller="ProjectCalculatorController as projectmanagerCtrl">
 	  	<h1>Project profits per developer</h1>
-		<div class="hero-unit" ng-repeat="project in projectmanager.projects">
-			<h2>Project: {{ project.name }}</h2>
-			Total amount: <input type="text" value="{{ project.amount }}" />
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Developer</th>
-						<th>Hours</th>
-						<th>Profit</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="developer in project.hours_developers">
-						<td>{{ developer.name }}</td>
-						<td><input type="text" value="{{ developer.hours }}" /></td>
-						<td>{{ (developer.hours/project.hours_total) * project.amount }}</td>
-						<td></td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="hero-unit" ng-repeat="project in projectmanagerCtrl.projects">
+			<projects></projects>
 		</div>
 	</div><!--/row-->
 
